@@ -4,7 +4,7 @@
             <p class="title">{{list.title}}</p>
             <div class="info-box">
                 <span class="name">{{list.name}}</span>
-                <span class="now">{{list.now}}</span>
+                <van-button size="mini" plain round hairline type="danger">{{list.now}}</van-button>
             </div>
         </div>
         <div class="list-right-img" v-if="list.img">
@@ -45,19 +45,12 @@
             flex-direction:row;
             justify-content:flex-start;
             align-items:center;
-            .name, .now{
-                font-size:12px;
-            }
             .name{
                 color:#999;
+                font-size:12px;
+                margin-right:10px;
             }
-            .now{
-                color:red;
-                margin-left:10px;
-                border:1px solid red;
-                padding:0px 5px;
-                border-radius:10px;
-            }
+
         }
     }
     .list-right-img{

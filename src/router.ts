@@ -6,11 +6,11 @@ import About from './views/About/About.vue';
 import Login from './views/Login/Login.vue';
 Vue.use(Router)
 const routes=[
+    {path: '/login', name: 'login', component: Login},
     {path: '/', component:Index , children:[
             { path: '/', name: 'About', component: Home}
         ]
-    },
-    {path: '/Login', name: 'Login', component: Login}
+    }
 ]
 export default new Router({
   mode: 'history',
