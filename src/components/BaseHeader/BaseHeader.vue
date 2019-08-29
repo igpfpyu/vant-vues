@@ -3,7 +3,7 @@
             class="nav-bar-box"
             :title="title"
             :left-text="leftText"
-            left-arrow
+            :left-arrow="false"
             fixed
             @click-left="onClickLeft"
             @click-right="onClickRight"

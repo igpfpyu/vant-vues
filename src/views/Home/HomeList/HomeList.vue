@@ -1,5 +1,5 @@
 <template>
-    <div class="list-box">
+    <div class="list-box" @click="itemClick(list)">
         <div class="list-left">
             <p class="title">{{list.title}}</p>
             <div class="info-box">
@@ -19,6 +19,11 @@
         props:{
             list:{
                 type:Object,
+            }
+        },
+        methods:{
+            itemClick(list){
+                this.$emit('itemClick', list);
             }
         }
     }

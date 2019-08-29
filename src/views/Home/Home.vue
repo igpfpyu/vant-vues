@@ -5,7 +5,7 @@
             @onClickRight="onClickRight"
          />
         <div slot="content">
-            <home-list v-for="(list, index) in lists" :list="list" :key="index"></home-list>
+            <home-list @itemClick="itemClick" v-for="(list, index) in lists" :list="list" :key="index"></home-list>
         </div>
     </base-page>
 </template>
@@ -23,6 +23,9 @@
             },
             onClickRight(params){
                 console.log(params);
+            },
+            itemClick(list){
+                console.log(JSON.stringify(list));
             }
         },
         data(){
