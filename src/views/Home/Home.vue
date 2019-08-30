@@ -1,12 +1,14 @@
 <template>
     <base-page>
-        <base-header slot="header" title="首页1" isRight
+        <base-header slot="header" title="首页" isRight
             @onClickLeft="onClickLeft"
             @onClickRight="onClickRight"
          />
         <div slot="content">
             <home-list @itemClick="itemClick" v-for="(list, index) in lists" :list="list" :key="index"></home-list>
+            <div class="footer">没有更多</div>
         </div>
+
     </base-page>
 </template>
 
@@ -117,6 +119,14 @@
         }
     }
 </script>
-
 <style scoped lang="less">
+    .footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size:12px;
+        padding:10px 0;
+        color:#999;
+    }
 </style>
