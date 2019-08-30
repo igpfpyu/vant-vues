@@ -3,10 +3,22 @@
         <base-header slot="header" title="视频"></base-header>
         <div slot="content">
             <div class="video-item">
-                <video ref="videoItem" width="100%">
+                <video ref="videoItem" width="100%"
+                       height="100%"
+                       object-fit="fill"
+                       @click="videoClick">
                     <source src="https://gslb.miaopai.com/stream/9B-WKwGpMZp2jUVNbAiuPhBvw6po448ObIJJ9g__.mp4" />
                 </video>
-                <div class="video-event"></div>
+                <div class="video-event" :class="paceShow?null:'site'">
+                    <div class="pace-line">
+                        <span :style="{'width':w+'%'}" ></span>
+                    </div>
+                    <div class="pace-box">
+                        <div>
+                            <van-icon @click="pauseCLick" name="play-circle" size="20px" />
+                        </div>
+                    </div>
+                </div>
                 <div class="video-play" v-if="play">
                     <van-icon @click="playClick" name="play-circle" size="40px" color="#fff" />
                 </div>
@@ -23,13 +35,30 @@
         components: {BaseHeader, BasePage},
         data(){
             return {
-                play:true
+                play:true,
+                paceShow:false,
+                w:0
             }
         },
         methods:{
+            pauseCLick(){
+
+            },
             playClick(){
-                this.play=false;
+                console.log(this.$refs.videoItem.duration);
+                this.play=this.paceShow=false;
                 this.$refs.videoItem.play();
+                setInterval(()=>this.getProgress(), 60);
+            },
+            videoClick(){
+                this.play=true;
+                this.$refs.videoItem.pause();
+                console.log('eeee')
+            },
+            getProgress(){
+                var percent = this.$refs.videoItem.currentTime / this.$refs.videoItem.duration;
+                this.w=percent*100;
+                console.log(this.w);
             }
         }
     }
@@ -47,6 +76,30 @@
         height:32px;
         background-color:rgba(0,0,0,0.2);
         z-index: 2;
+        overflow:hidden;
+        .pace-line{
+            width:100%;
+            height:1px;
+            overflow: hidden;
+            background-color:rgba(0, 0, 0, 0.6);
+            span{
+                display: block;
+                height:100%;
+                width:10%;
+                background-color:red;
+            }
+        }
+        .pace-box{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding:5px;
+        }
+    }
+    .site{
+        transition: bottom 300ms;
+        bottom:-31px;
     }
     .video-play{
         width:100%;
