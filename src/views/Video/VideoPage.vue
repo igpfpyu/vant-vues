@@ -44,6 +44,11 @@
         methods:{
             pauseCLick(){
                 this.play=this.paceShow=!this.play;
+                if(!this.play){
+                    this.$refs.videoItem.play();
+                }else{
+                    this.$refs.videoItem.pause()
+                }
                 console.log(this.play);
             },
             playClick(){
@@ -85,7 +90,7 @@
         overflow:hidden;
         .pace-line{
             width:100%;
-            height:5px;
+            height:2px;
             overflow: hidden;
             background-color:rgba(0, 0, 0, 0.6);
             span{
