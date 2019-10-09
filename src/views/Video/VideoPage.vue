@@ -15,7 +15,6 @@
                     </div>
                     <div class="pace-box">
                         <div>
-                            
                             <van-icon @click="pauseCLick" name="play-circle" size="20px" />
                         </div>
                     </div>
