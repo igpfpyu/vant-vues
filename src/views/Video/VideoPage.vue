@@ -46,7 +46,6 @@
 
             },
             playClick(){
-                console.log(this.$refs.videoItem.duration);
                 this.play=this.paceShow=false;
                 this.$refs.videoItem.play();
                 this.getProgress();
