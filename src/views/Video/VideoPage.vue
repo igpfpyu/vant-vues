@@ -43,7 +43,8 @@
         },
         methods:{
             pauseCLick(){
-
+                this.play=this.paceShow=!this.play;
+                console.log(this.play);
             },
             playClick(){
                 this.play=this.paceShow=false;
@@ -51,8 +52,8 @@
                 this.getProgress();
             },
             videoClick(){
-                this.play=true;
-                this.$refs.videoItem.pause();
+                this.paceShow=true;
+                // this.$refs.videoItem.pause();
             },
             getProgress(){
                 this.timer= setInterval(()=>{
@@ -80,17 +81,17 @@
         width:100%;
         height:32px;
         background-color:rgba(0,0,0,0.2);
-        z-index: 2;
+        z-index: 999;
         overflow:hidden;
         .pace-line{
             width:100%;
-            height:1px;
+            height:5px;
             overflow: hidden;
             background-color:rgba(0, 0, 0, 0.6);
             span{
                 display: block;
                 height:100%;
-                width:10%;
+                width:0;
                 background-color:red;
             }
         }
@@ -104,7 +105,7 @@
     }
     .site{
         transition: bottom 300ms;
-        bottom:-31px;
+        bottom:-28px;
     }
     .video-play{
         width:100%;
