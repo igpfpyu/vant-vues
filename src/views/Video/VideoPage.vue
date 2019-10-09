@@ -37,7 +37,7 @@
             return {
                 play:true,
                 paceShow:false,
-                w:0
+                w:0     //视频进条的宽度；
             }
         },
         methods:{
@@ -48,17 +48,15 @@
                 console.log(this.$refs.videoItem.duration);
                 this.play=this.paceShow=false;
                 this.$refs.videoItem.play();
-                setInterval(()=>this.getProgress(), 60);
+                setInterval(()=>this.getProgress(), 100);
             },
             videoClick(){
                 this.play=true;
                 this.$refs.videoItem.pause();
-                console.log('eeee')
             },
             getProgress(){
                 var percent = this.$refs.videoItem.currentTime / this.$refs.videoItem.duration;
-                this.w=percent*100;
-                console.log(this.w);
+                this.w=(percent*100).toFixed(2);
             }
         }
     }
