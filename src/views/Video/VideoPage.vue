@@ -14,9 +14,7 @@
                         <span :style="{'width':w+'%'}" ></span>
                     </div>
                     <div class="pace-box">
-                        <div>
-                            <van-icon @click="pauseCLick" name="play-circle" size="20px" />
-                        </div>
+                        <van-icon @click="pauseCLick" name="play-circle" size="20px" />
                     </div>
                 </div>
                 <div class="video-play" v-if="play">
