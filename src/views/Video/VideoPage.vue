@@ -60,13 +60,19 @@
             },
             getProgress(){
                 this.timer= setInterval(()=>{
-                    var percent = this.$refs.videoItem.currentTime / this.$refs.videoItem.duration;
+                    let percent = this.$refs.videoItem.currentTime / this.$refs.videoItem.duration;
                     this.w=(percent*100).toFixed(2);
+                    if(percent>=1){
+                        this.w=0;
+                        clearInterval(this.timer);
+                        this.$refs.videoItem.load();
+                        this.play=this.paceShow=true;
+                        console.log('aaaaaa')
+                    }
                 }, 100);
-
             }
         },
-        beforeDestroy(){
+        beforeDestroy(){//离开页面时
             clearInterval(this.timer);
             this.timer=null;
         },
